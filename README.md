@@ -14,7 +14,7 @@ In short, there are two alternative setups to run the model: inside a Docker con
 
 
 
-You can start running a simulation with these steps:
+With Docker, you can start running a simulation with these steps:
 1. Create a [github personal access token](https://docs.github.com/en/free-pro-team@latest/github/authenticating-to-github/creating-a-personal-access-token) with at least the `read:packages` permission selected.
 1. Place the token in `TOKEN.txt`.
 1. Log in to `docker.pkg.github.com`:
