@@ -19,7 +19,7 @@ With Docker, you can start running a simulation with these steps:
 1. Place the token in `TOKEN.txt`.
 1. Log in to `docker.pkg.github.com`:
 ```bash
-$ cat ~/TOKEN.txt | docker login https://docker.pkg.github.com -u USERNAME --password-stdin
+$ cat TOKEN.txt | docker login https://docker.pkg.github.com -u USERNAME --password-stdin
 Login Succeeded
 ```
 1.  Pull the Docker image:
