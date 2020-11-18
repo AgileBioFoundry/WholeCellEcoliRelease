@@ -16,12 +16,12 @@ In short, there are two alternative setups to run the model: inside a Docker con
 
 With Docker, you can start running a simulation with these steps:
 1. Create a [github personal access token](https://docs.github.com/en/free-pro-team@latest/github/authenticating-to-github/creating-a-personal-access-token) with at least the `read:packages` permission selected.
-1. Place the token in `TOKEN.txt`.
+1. Place the token in `github_personal_access_token.txt`.
 1. Log in to `docker.pkg.github.com`:
     ```bash
-    $ cat TOKEN.txt | docker login https://docker.pkg.github.com -u USERNAME --password-stdin
-    Login Succeeded
+    cat github_personal_access_token.txt | docker login https://docker.pkg.github.com -u USERNAME --password-stdin
     ```
+    You should see an output message like `Login Succeeded`
 1.  Pull the Docker image:
     ```shell script
     docker pull docker.pkg.github.com/covertlab/wholecellecolirelease/wcm-full:latest
