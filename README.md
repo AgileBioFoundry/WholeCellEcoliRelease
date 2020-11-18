@@ -11,23 +11,10 @@ See [docs/README.md](docs/README.md) for more info on setting up and running the
 
 In short, there are two alternative setups to run the model: inside a Docker container vs. in a manually constructed `pyenv` virtual environment.  
 
-```bash
-$ cat ~/TOKEN.txt | docker login https://docker.pkg.github.com -u USERNAME --password-stdin
-Login Succeeded
-```
-
-```bash
-bash-3.2$ docker pull docker.pkg.github.com/covertlab/wholecellecolirelease/wcm-full:latest
-latest: Pulling from covertlab/wholecellecolirelease/wcm-full
-
-Digest: sha256:b1b945dbcec239de312eb02ed2709cc9e69afbf1dc3422571ca0c3a16b19ae9f
-Status: Downloaded newer image for docker.pkg.github.com/covertlab/wholecellecolirelease/wcm-full:latest
-docker.pkg.github.com/covertlab/wholecellecolirelease/wcm-full:latest
-
-```
 
 
-you can start running a simulation with three commands:
+
+You can start running a simulation with these steps:
 1. Create a [github personal access token](https://docs.github.com/en/free-pro-team@latest/github/authenticating-to-github/creating-a-personal-access-token) with at least the `read:packages` permission selected.
 1. Place the token in `TOKEN.txt`.
 1. Log in to `docker.pkg.github.com`:
