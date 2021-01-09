@@ -158,8 +158,6 @@ class TableReader(object):
 			np.fromstring.  It seems that using np.fromstring here will become
 			deprecated in later versions of NumPy.
 
-		TODO (John): Open in binary mode.
-
 		TODO: Select criteria to automatically select between two methods for indices
 		"""
 
@@ -175,7 +173,7 @@ class TableReader(object):
 
 		nEntries = sizes.size
 
-		with open(os.path.join(self._dirColumns, name, tw.FILE_DATA)) as dataFile:
+		with open(os.path.join(self._dirColumns, name, tw.FILE_DATA), 'rb') as dataFile:
 			if indices is None:
 				dataFile.seek(offsets[0])
 
@@ -259,7 +257,7 @@ class TableReader(object):
 
 		size = offsets[index+1] - offsets[index]
 
-		with open(os.path.join(self._dirColumns, name, tw.FILE_DATA)) as dataFile:
+		with open(os.path.join(self._dirColumns, name, tw.FILE_DATA), 'rb') as dataFile:
 			dataFile.seek(offsets[index])
 
 			return np.fromstring(
@@ -286,10 +284,10 @@ class TableReader(object):
 
 		"""
 
-		with open(os.path.join(self._dirColumns, name, tw.FILE_OFFSETS)) as offsetsFile:
+		with open(os.path.join(self._dirColumns, name, tw.FILE_OFFSETS), 'rb') as offsetsFile:
 			offsets = np.array([int(i.strip()) for i in offsetsFile])
 
-		with open(os.path.join(self._dirColumns, name, tw.FILE_DATA)) as dataFile:
+		with open(os.path.join(self._dirColumns, name, tw.FILE_DATA), 'rb') as dataFile:
 			rawDtype = json.loads(dataFile.read(offsets[0]))
 
 			if isinstance(rawDtype, basestring):
@@ -316,19 +314,3 @@ class TableReader(object):
 		Returns the names of all columns.
 		"""
 		return self._columnNames
-
-
-	def close(self):
-		"""
-		Does nothing.
-
-		The TableReader keeps no files open, so this method does nothing.
-
-		Notes
-		-----
-		TODO (John): Consider removing this method.  At the moment are usage is
-			inconsistent, and gives the impression that it is actually
-			beneficial or necessary.
-
-		"""
-		pass
