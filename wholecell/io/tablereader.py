@@ -120,9 +120,9 @@ class TableReader(object):
 		if name not in self._attributeNames:
 			raise DoesNotExistError("No such attribute: {}".format(name))
 
-		return json.loads(
-			open(os.path.join(self._dirAttributes, name)).read()
-			)
+                with open(os.path.join(self._dirAttributes, name)) as f:
+                    return json.load(f).read()
+			
 
 
 	def readColumn(self, name, indices=None, block_read=True):
