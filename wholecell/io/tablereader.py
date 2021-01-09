@@ -69,8 +69,6 @@ class TableReader(object):
 	-----
 	TODO (John): Consider a method for loading an indexed portion of a column.
 
-	TODO (John): Consider removing unused methods (see below).
-
 	TODO (John): Unit tests.
 
 	"""
@@ -238,68 +236,6 @@ class TableReader(object):
 						dataFile.seek(last_seek, 1)
 
 				return data.squeeze()
-
-
-	def iterColumn(self, name):
-		"""
-		Iterate over a column, entry-by-entry.
-
-		Parameters
-		----------
-		name : str
-			The name of the column.
-
-		Yields
-		------
-		NumPy ndarrays.
-
-		Notes
-		-----
-		TODO (John): This method appears to currently be unused.  Consider
-			removing it.
-
-		"""
-
-		if name not in self._columnNames:
-			raise DoesNotExistError("No such column: {}".format(name))
-
-		offsets, dtype = self._loadOffsets(name)
-
-		sizes = np.diff(offsets)
-
-		with open(os.path.join(self._dirColumns, name, tw.FILE_DATA)) as dataFile:
-			dataFile.seek(offsets[0])
-
-			for size in sizes:
-				yield np.fromstring(
-					dataFile.read(size), dtype
-					)
-
-
-	def readRow(self, index):
-		"""
-		Returns the values for all columns for a given entry.
-
-		Parameters
-		----------
-		index : int
-			The index of the desired row (entry).
-
-		Returns
-		-------
-		dict of {string: ndarray} pairs
-
-		Notes
-		-----
-		TODO (John): This method appears to currently be unused.  Consider
-			removing it.
-
-		"""
-
-		return {
-			name: self._loadEntry(name, index)
-			for name in self._columnNames
-			}
 
 
 	def _loadEntry(self, name, index):
