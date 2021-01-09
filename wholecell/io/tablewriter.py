@@ -1,6 +1,7 @@
 
 from __future__ import absolute_import
 from __future__ import division
+from __future__ import print_function
 
 import os
 import json
@@ -345,7 +346,7 @@ class TableWriter(object):
 
 			try:
 				if isinstance(value, np.ndarray):
-					print "Warning - converting '{}' attribute from ndarray to list for JSON serialization.".format(name)
+					print("Warning - converting '{}' attribute from ndarray to list for JSON serialization.".format(name))
 
 					value = value.tolist()
 
