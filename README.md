@@ -24,11 +24,15 @@ In short, there are two alternative setups to run the model: inside a Docker con
 1. Create a directory called `WCOutputs`
 1. Run the Docker container:
     ```shell script
-    docker run --name=wcm --rm -it -v "$PWD"/WCOutputs:/wcEcoli/out docker.pkg.github.com/covertlab/wholecellecolirelease/wcm-full
+    docker run --name=wcm --rm -it -v "$PWD"/WCOutputs:/output docker.pkg.github.com/covertlab/wholecellecolirelease/wcm-full
+    ```
+1. Inside the container, copy pre-fitted values to the output directory
+    ```shell script
+    cp -r out/manual /output/.
     ```
 1. Inside the container, run the model:
     ```shell script
-    python runscripts/manual/runSim.py
+    python runscripts/manual/runSim.py /output/manual/
     ```
 
 
