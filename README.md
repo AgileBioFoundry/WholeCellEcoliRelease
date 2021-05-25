@@ -21,9 +21,10 @@ In short, there are two alternative setups to run the model: inside a Docker con
     ```shell script
     docker pull docker.pkg.github.com/covertlab/wholecellecolirelease/wcm-full:latest
     ```
+1. Create a directory called `WCOutputs`
 1. Run the Docker container:
     ```shell script
-    docker run --name=wcm -it --rm docker.pkg.github.com/covertlab/wholecellecolirelease/wcm-full
+    docker run --name=wcm --rm -it -v "$PWD"/WCOutputs:/output docker.pkg.github.com/covertlab/wholecellecolirelease/wcm-full
     ```
 1. Inside the container, run the model:
     ```shell script
